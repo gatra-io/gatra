@@ -9,12 +9,12 @@
 **GATRA** is an enterprise-grade, high-performance security reverse proxy designed to govern autonomous AI agents. By placing GATRA between agent orchestrators (LangChain, CrewAI, AutoGen, custom MCP clients) and downstream APIs or MCP tools, DevSecOps teams can enforce strict rate limits, Common Expression Language (CEL) safety policies, stateful trajectory boundaries, and ephemeral task-level constraints without altering agent code.
 
 ```text
-鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?      鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?      鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
-鈹?                鈹? HTTP 鈹?   GATRA Security Proxy       鈹? HTTP 鈹?                鈹?
-鈹?  LLM Agent /   鈹溾攢鈹€鈹€鈹€鈹€鈹€>鈹? 鈥?Ed25519 Token Auth         鈹溾攢鈹€鈹€鈹€鈹€鈹€>鈹?  Downstream    鈹?
-鈹? Orchestrator   鈹?      鈹? 鈥?Stateful Trajectory Caps   鈹?      鈹?  MCP Tool /    鈹?
-鈹?                鈹?      鈹? 鈥?Schema Auto-Discovery      鈹?      鈹?  API Target    鈹?
-鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?      鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?      鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+┌─────────────────┐       ┌───────────────────────────────┐       ┌─────────────────┐
+│                 │  HTTP │    GATRA Security Proxy       │  HTTP │                 │
+│   LLM Agent /   ├──────>│  • Ed25519 Token Auth         ├──────>│   Downstream    │
+│  Orchestrator   │       │  • Stateful Trajectory Caps   │       │   MCP Tool /    │
+│                 │       │  • Schema Auto-Discovery      │       │   API Target    │
+└─────────────────┘       └───────────────────────────────┘       └─────────────────┘
 ```
 
 ---
@@ -121,13 +121,13 @@ curl -X POST http://localhost:8080/v1/action \
 
 ```text
 gatra/
-鈹溾攢鈹€ cmd/gatra/              # Cobra CLI binaries (start, gen-keys, discover, validate-config)
-鈹溾攢鈹€ internal/               # Core data plane proxy, CEL engine, and state accumulators
-鈹溾攢鈹€ sdks/                   # Native client SDKs (python, typescript)
-鈹溾攢鈹€ examples/               # Node.js & Python agent simulation recipes
-鈹溾攢鈹€ tests/                  # End-to-end integration and ephemeral constraint test suites
-鈹溾攢鈹€ policy.json             # Starter policy configuration
-鈹斺攢鈹€ Makefile                # Cross-platform developer workflow build file
+├── cmd/gatra/              # Cobra CLI binaries (start, gen-keys, discover, validate-config)
+├── internal/               # Core data plane proxy, CEL engine, and state accumulators
+├── sdks/                   # Native client SDKs (python, typescript)
+├── examples/               # Node.js & Python agent simulation recipes
+├── tests/                  # End-to-end integration and ephemeral constraint test suites
+├── policy.json             # Starter policy configuration
+└── Makefile                # Cross-platform developer workflow build file
 ```
 
 ---
