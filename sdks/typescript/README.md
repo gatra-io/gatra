@@ -5,4 +5,4 @@ Official Node.js & TypeScript SDK for the [GATRA Zero-Trust AI Agent Security En
 ## Installation
 
 ```bash
-npm install @gatra/sdk
+npm install gatra-sdk
