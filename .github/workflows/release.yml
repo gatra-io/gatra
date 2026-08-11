@@ -1,5 +1,4 @@
-$releaseYaml = @'
-name: Publish Release SDKs
+﻿name: Publish Release SDKs
 
 on:
   push:
@@ -48,8 +47,3 @@ jobs:
           npm ci
           npm run build
           npm publish --access public
-'@
-
-New-Item -ItemType Directory -Path ".github/workflows" -Force | Out-Null
-Set-Content -Path ".github/workflows/release.yml" -Value $releaseYaml -Encoding utf8
-Write-Host "✓ .github/workflows/release.yml created successfully!" -ForegroundColor Green
