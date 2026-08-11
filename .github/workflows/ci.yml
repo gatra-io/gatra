@@ -1,4 +1,4 @@
-name: GATRA Continuous Integration
+﻿name: GATRA Continuous Integration
 
 on:
   push:
@@ -19,14 +19,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.22'
-
-      - name: Cache Go Dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
+          cache: true
 
       - name: Install Dependencies
         run: go mod download
