@@ -25,7 +25,7 @@ jobs:
           cd sdks/python
           pip install build twine
           python -m build
-          twine upload dist/* --skip-existing
+          twine upload dist/*
 
   publish-npm:
     name: Publish TypeScript SDK to npm
