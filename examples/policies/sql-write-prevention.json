@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "rules": [
+    {
+      "rule_id": "prevent_sql_write_operations",
+      "tool_pattern": "database/query",
+      "value_path": "$.sql",
+      "condition": "!payload.sql.matches('(?i).*(DROP|DELETE|ALTER|TRUNCATE).*')"
+    }
+  ]
+}

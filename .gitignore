@@ -1,0 +1,26 @@
+# Binaries
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Database & Runtime Logs
+*.db
+*.log
+e2e_temp*
+test_ephemeral*
+
+# SDK Build & Dependency Output
+node_modules/
+dist/
+*.egg-info/
+build/
+.pnpm-store/
+
+# IDE & OS Junk
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

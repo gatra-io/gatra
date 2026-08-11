@@ -1,0 +1,23 @@
+{
+  "version": "v1",
+  "rules": [
+    {
+      "rule_id": "stripe_refund_policy",
+      "tool_pattern": "stripe/refund",
+      "value_path": "$.amount",
+      "limits": {
+        "max_per_call": 50.00,
+        "max_cumulative": 200.00
+      },
+      "accumulator": {
+        "type": "sum"
+      },
+      "condition": "payload.currency == 'USD'",
+      "time_window": {
+        "enabled": true,
+        "reset_schedule": "@daily",
+        "timezone": "UTC"
+      }
+    }
+  ]
+}

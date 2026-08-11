@@ -1,0 +1,80 @@
+name: GATRA Continuous Integration
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test-go:
+    name: Build & Test Go Proxy Core
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Cache Go Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Install Dependencies
+        run: go mod download
+
+      - name: Build Binary
+        run: go build -o bin/gatra ./cmd/gatra
+
+      - name: Run Unit Tests
+        run: go test -v ./...
+
+      - name: Verify CLI Validation
+        run: ./bin/gatra validate-config -c policy.json
+
+      - name: Test Auto-Discovery Engine
+        run: ./bin/gatra discover -s examples/policies/sample_mcp_tools.json -o policy_test.json
+
+  build-ts-sdk:
+    name: Build TypeScript SDK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies & Build (@gatra/sdk)
+        run: |
+          cd sdks/typescript
+          npm ci
+          npm run build
+
+  build-python-sdk:
+    name: Build Python SDK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies & Verify (gatra-sdk)
+        run: |
+          cd sdks/python
+          pip install build cryptography
+          python -m build

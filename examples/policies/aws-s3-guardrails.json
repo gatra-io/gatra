@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "rules": [
+    {
+      "rule_id": "s3_bucket_access_limit",
+      "tool_pattern": "aws/s3/*",
+      "value_path": "$.bucket_name",
+      "condition": "!payload.bucket_name.startsWith('prod-') && payload.operation != 'DELETE'"
+    }
+  ]
+}

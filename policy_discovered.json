@@ -1,0 +1,52 @@
+{
+  "version": "v1",
+  "rules": [
+    {
+      "rule_id": "stripe_refund_amount_numeric_limit",
+      "tool_pattern": "stripe/refund",
+      "value_path": "$.amount",
+      "limits": {
+        "max_per_call": 250,
+        "max_cumulative": 1000
+      },
+      "accumulator": {
+        "type": "sum"
+      },
+      "time_window": {
+        "enabled": true,
+        "reset_schedule": "@daily",
+        "timezone": "UTC"
+      }
+    },
+    {
+      "rule_id": "stripe_refund_currency_injection_guard",
+      "tool_pattern": "stripe/refund",
+      "value_path": "$.currency",
+      "limits": {},
+      "accumulator": {
+        "type": "count"
+      },
+      "condition": "!payload.currency.matches('(?i)(drop|delete|truncate|alter|grant|exec|rm\\\\s+-rf)')"
+    },
+    {
+      "rule_id": "database_query_query_injection_guard",
+      "tool_pattern": "database/query",
+      "value_path": "$.query",
+      "limits": {},
+      "accumulator": {
+        "type": "count"
+      },
+      "condition": "!payload.query.matches('(?i)(drop|delete|truncate|alter|grant|exec|rm\\\\s+-rf)')"
+    },
+    {
+      "rule_id": "filesystem_read_file_path_path_traversal_guard",
+      "tool_pattern": "filesystem/read",
+      "value_path": "$.file_path",
+      "limits": {},
+      "accumulator": {
+        "type": "count"
+      },
+      "condition": "!payload.file_path.contains('..')"
+    }
+  ]
+}

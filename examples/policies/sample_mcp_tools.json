@@ -1,0 +1,38 @@
+{
+  "tools": [
+    {
+      "name": "stripe/refund",
+      "description": "Issues a customer refund",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "amount": { "type": "number", "description": "Refund amount in dollars" },
+          "currency": { "type": "string", "description": "ISO currency code" }
+        },
+        "required": ["amount", "currency"]
+      }
+    },
+    {
+      "name": "database/query",
+      "description": "Executes SQL query against production DB",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "SQL statement" }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "filesystem/read",
+      "description": "Reads file from server path",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "file_path": { "type": "string", "description": "Relative file path" }
+        },
+        "required": ["file_path"]
+      }
+    }
+  ]
+}
