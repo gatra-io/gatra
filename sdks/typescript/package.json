@@ -1,6 +1,6 @@
 {
   "name": "gatra-sdk",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Official TypeScript/JavaScript SDK for GATRA Zero-Trust AI Agent Security Engine",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
