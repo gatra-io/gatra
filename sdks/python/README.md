@@ -38,9 +38,13 @@ pip install gatra-sdk
 
 ## Quickstart
 
-> **Prerequisite:** Make sure the GATRA proxy binary is running locally on port `8080`:
+> **Prerequisite:** Ensure you have generated an Ed25519 keypair and the GATRA proxy is running locally on port `8080`:
 > ```bash
-> ./bin/gatra start -c policy.json -k "<YOUR_BASE64_PUBLIC_KEY>" --port 8080 --target http://localhost:3000
+> # 1. Generate Ed25519 keypair (prints Public Key and Private Key)
+> ./bin/gatra gen-keys -t session_101 -p "*" --json
+> 
+> # 2. Start proxy using the generated PUBLIC key
+> ./bin/gatra start -c policy.json -k "<YOUR_PUBLIC_KEY>" --port 8080 --target http://localhost:3000
 > ```
 
 ### 1. Basic Token Minting & Tool Execution
@@ -48,7 +52,7 @@ pip install gatra-sdk
 ```python
 from gatra import GatraTokenIssuer, GatraClient
 
-# Step 1: Initialize Token Issuer with your base64-encoded Ed25519 private key
+# Step 1: Initialize Token Issuer with your generated PRIVATE key
 issuer = GatraTokenIssuer(private_key_base64="YOUR_BASE64_PRIVATE_KEY")
 
 # Step 2: Mint a capability token bound to a specific trajectory/session
