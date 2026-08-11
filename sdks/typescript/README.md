@@ -38,6 +38,11 @@ npm install gatra-sdk
 
 ## Quickstart
 
+> **Prerequisite:** Make sure the GATRA proxy binary is running locally on port `8080`:
+> ```bash
+> ./bin/gatra start -c policy.json -k "<YOUR_BASE64_PUBLIC_KEY>" --port 8080 --target http://localhost:3000
+> ```
+
 ### 1. Basic Token Minting & Tool Execution
 
 ```typescript
@@ -49,10 +54,10 @@ const issuer = new GatraTokenIssuer('YOUR_BASE64_PRIVATE_KEY');
 // Step 2: Mint a capability token bound to a specific trajectory/session
 const capabilityToken = issuer.mintToken('session_101', '*');
 
-// Step 3: Initialize GATRA Client pointing to your security proxy instance
+// Step 3: Initialize GATRA Client pointing to your proxy instance at localhost:8080
 const client = new GatraClient('http://localhost:8080', capabilityToken);
 
-// Step 4: Execute a tool call safely through GATRA
+// Step 4: Execute a tool call safely through GATRA Proxy
 async function runTool() {
   const { status, data, latencyMs } = await client.executeTool('/v1/action', {
     amount: 25.00,

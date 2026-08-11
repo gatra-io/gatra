@@ -49,16 +49,22 @@ Generate a baseline `policy.json` directly from an MCP tool manifest:
 
 ### 3. Mint Keypair and Capability Token
 
-Generate an Ed25519 keypair and signed session token:
+Generate an Ed25519 keypair and signed session token (copy the outputted `public_key_base64` for Step 4):
 
 ```bash
 ./bin/gatra gen-keys -t session_101 -p "demo/tool" --json
 ```
 
-### 4. Start GATRA Proxy
+### 4. Start GATRA Security Proxy
+
+Launch the proxy server (listens on `http://localhost:8080` by default and routes requests to your downstream API or MCP server):
 
 ```bash
-./bin/gatra start -c policy.json -k "<YOUR_BASE64_PUBLIC_KEY>"
+./bin/gatra start \
+  -c policy.json \
+  -k "<YOUR_BASE64_PUBLIC_KEY>" \
+  --port 8080 \
+  --target http://localhost:3000
 ```
 
 ---

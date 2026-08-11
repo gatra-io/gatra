@@ -38,6 +38,11 @@ pip install gatra-sdk
 
 ## Quickstart
 
+> **Prerequisite:** Make sure the GATRA proxy binary is running locally on port `8080`:
+> ```bash
+> ./bin/gatra start -c policy.json -k "<YOUR_BASE64_PUBLIC_KEY>" --port 8080 --target http://localhost:3000
+> ```
+
 ### 1. Basic Token Minting & Tool Execution
 
 ```python
@@ -52,13 +57,13 @@ capability_token = issuer.mint_token(
     tool_pattern="*"
 )
 
-# Step 3: Initialize GATRA Client pointing to your security proxy instance
+# Step 3: Initialize GATRA Client pointing to your security proxy instance at localhost:8080
 client = GatraClient(
     proxy_url="http://localhost:8080",
     capability_token=capability_token
 )
 
-# Step 4: Execute a tool call safely through GATRA
+# Step 4: Execute a tool call safely through GATRA Proxy
 status, response, latency_ms = client.execute_tool(
     path="/v1/action",
     payload={
