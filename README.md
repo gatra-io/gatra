@@ -1,4 +1,4 @@
-# GATRA: Zero-Trust Security Proxy & Control Plane for AI Agents
+﻿# GATRA: Zero-Trust Security Proxy & Control Plane for AI Agents
 
 > **Automated, cryptographic runtime enforcement for Model Context Protocol (MCP) servers, tool calls, and LLM agent trajectories.**
 
@@ -9,12 +9,12 @@
 **GATRA** is an enterprise-grade, high-performance security reverse proxy designed to govern autonomous AI agents. By placing GATRA between agent orchestrators (LangChain, CrewAI, AutoGen, custom MCP clients) and downstream APIs or MCP tools, DevSecOps teams can enforce strict rate limits, Common Expression Language (CEL) safety policies, stateful trajectory boundaries, and ephemeral task-level constraints without altering agent code.
 
 ```text
-┌─────────────────┐       ┌───────────────────────────────┐       ┌─────────────────┐
-│                 │  HTTP │    GATRA Security Proxy       │  HTTP │                 │
-│   LLM Agent /   ├──────>│  • Ed25519 Token Auth         ├──────>│   Downstream    │
-│  Orchestrator   │       │  • Stateful Trajectory Caps   │       │   MCP Tool /    │
-│                 │       │  • Schema Auto-Discovery      │       │   API Target    │
-└─────────────────┘       └───────────────────────────────┘       └─────────────────┘
+鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?      鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?      鈹屸攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
+鈹?                鈹? HTTP 鈹?   GATRA Security Proxy       鈹? HTTP 鈹?                鈹?
+鈹?  LLM Agent /   鈹溾攢鈹€鈹€鈹€鈹€鈹€>鈹? 鈥?Ed25519 Token Auth         鈹溾攢鈹€鈹€鈹€鈹€鈹€>鈹?  Downstream    鈹?
+鈹? Orchestrator   鈹?      鈹? 鈥?Stateful Trajectory Caps   鈹?      鈹?  MCP Tool /    鈹?
+鈹?                鈹?      鈹? 鈥?Schema Auto-Discovery      鈹?      鈹?  API Target    鈹?
+鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?      鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?      鈹斺攢鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹?
 ```
 
 ---
@@ -85,14 +85,14 @@ client = GatraClient(proxy_url="http://localhost:8080", capability_token=token)
 status, response, latency = client.execute_tool("/v1/action", {"amount": 25.00, "currency": "USD"})
 ```
 
-### TypeScript / JavaScript SDK (`@gatra/sdk`)
+### TypeScript / JavaScript SDK (`gatra-sdk`)
 
 ```bash
-npm install @gatra/sdk
+npm install gatra-sdk
 ```
 
 ```typescript
-import { GatraTokenIssuer, GatraClient } from '@gatra/sdk';
+import { GatraTokenIssuer, GatraClient } from 'gatra-sdk';
 
 const issuer = new GatraTokenIssuer('<YOUR_PRIVATE_KEY>');
 const token = issuer.mintToken('session_101', '*');
@@ -121,13 +121,13 @@ curl -X POST http://localhost:8080/v1/action \
 
 ```text
 gatra/
-├── cmd/gatra/              # Cobra CLI binaries (start, gen-keys, discover, validate-config)
-├── internal/               # Core data plane proxy, CEL engine, and state accumulators
-├── sdks/                   # Native client SDKs (python, typescript)
-├── examples/               # Node.js & Python agent simulation recipes
-├── tests/                  # End-to-end integration and ephemeral constraint test suites
-├── policy.json             # Starter policy configuration
-└── Makefile                # Cross-platform developer workflow build file
+鈹溾攢鈹€ cmd/gatra/              # Cobra CLI binaries (start, gen-keys, discover, validate-config)
+鈹溾攢鈹€ internal/               # Core data plane proxy, CEL engine, and state accumulators
+鈹溾攢鈹€ sdks/                   # Native client SDKs (python, typescript)
+鈹溾攢鈹€ examples/               # Node.js & Python agent simulation recipes
+鈹溾攢鈹€ tests/                  # End-to-end integration and ephemeral constraint test suites
+鈹溾攢鈹€ policy.json             # Starter policy configuration
+鈹斺攢鈹€ Makefile                # Cross-platform developer workflow build file
 ```
 
 ---

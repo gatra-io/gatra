@@ -49,7 +49,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Dependencies & Build (@gatra/sdk)
+      - name: Install Dependencies & Build (gatra-sdk)
         run: |
           cd sdks/typescript
           npm ci
