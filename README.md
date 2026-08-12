@@ -9,6 +9,9 @@
 
 <img width="1280" height="640" alt="gatra" src="https://github.com/user-attachments/assets/8eebe31d-10c4-4a10-a9ad-08adc4472158" />
 
+
+
+
 > **Automated, cryptographic runtime enforcement for Model Context Protocol (MCP) servers, tool calls, and LLM agent trajectories.**
 
 ---
