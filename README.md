@@ -7,6 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/gatra-io/gatra?style=social)](https://github.com/gatra-io/gatra)
 
+<img width="1280" height="640" alt="gatra" src="https://github.com/user-attachments/assets/8eebe31d-10c4-4a10-a9ad-08adc4472158" />
+
 > **Automated, cryptographic runtime enforcement for Model Context Protocol (MCP) servers, tool calls, and LLM agent trajectories.**
 
 ---
