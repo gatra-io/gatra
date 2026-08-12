@@ -1,5 +1,12 @@
 ﻿# GATRA: Zero-Trust Security Proxy & Control Plane for AI Agents
 
+[![PyPI - Version](https://img.shields.io/pypi/v/gatra-sdk?color=blue&label=PyPI)](https://pypi.org/project/gatra-sdk/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/gatra-sdk?label=PyPI%20downloads)](https://pypi.org/project/gatra-sdk/)
+[![npm - Version](https://img.shields.io/npm/v/gatra-sdk?color=red&label=npm)](https://www.npmjs.com/package/gatra-sdk)
+[![npm - Downloads](https://img.shields.io/npm/dm/gatra-sdk?label=npm%20downloads)](https://www.npmjs.com/package/gatra-sdk)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/gatra-io/gatra?style=social)](https://github.com/gatra-io/gatra)
+
 > **Automated, cryptographic runtime enforcement for Model Context Protocol (MCP) servers, tool calls, and LLM agent trajectories.**
 
 ---
